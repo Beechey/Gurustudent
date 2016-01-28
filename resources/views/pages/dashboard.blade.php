@@ -8,14 +8,12 @@
 <div class="row">
 	<div class="text-center">
 		<h2>{{ Auth::user()->username }}'s questions</h2>
+		<div class="row">
+			<div class="col-xs-12 col-md-12 form-group">
+				<a href="/ask"><button class="btn btn-primary pull-right">Post a question</button></a>
+			</div>
+		</div>
 		<p>You haven't asked any questions yet...</p>
-		<p>Do so by clicking <a href="/ask">here!</a></p>
-	</div>
-</div>
-<div class="row">
-	<hr />
-	<div class="text-center">
-		<p>&copy; gurustudent 2015, all rights reserved.</p>
 	</div>
 </div>
 @stop

@@ -1,13 +1,13 @@
 @if (Session::has('info'))
 	<div class="alert alert-success" role="alert">
-		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<strong>Success!</strong> {{ Session::get('info') }}
 	</div>
 @endif
 
 @if (Session::has('danger'))
 	<div class="alert alert-danger" role="alert">
-		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<strong>Error!</strong> {{ Session::get('danger') }}
 	</div>
 @endif

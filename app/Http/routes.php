@@ -16,7 +16,6 @@ Route::group(['middleware' => 'web'], function () {
 	]);
 
 	// Authentication
-
     Route::auth();
 
 	Route::get('/register', [
@@ -37,4 +36,10 @@ Route::group(['middleware' => 'web'], function () {
 		'uses' => 'Auth\AuthController@postLogin',
 		'middleware' => ['guest'],
 	]);
+
+	// Search
+	Route::get('/search', [
+		'uses' => 'Search\SearchController@getResults',
+		'as' => 'search.results',
+	]);	// show results page
 });

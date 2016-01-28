@@ -7,7 +7,7 @@
 <hr />
 <div class="row">
 	<div class="col-md-8 form-group">
-		<form id="contact" method="post" class="form" role="form">
+		<form id="contact" role="form" method="POST" action="{{ route('auth.login') }}">
 			<div class="row">
 				<div class="col-xs-6 col-md-6 form-group">
 					<input class="form-control" id="title" name="title" placeholder="Title..." type="text"autofocus="">
