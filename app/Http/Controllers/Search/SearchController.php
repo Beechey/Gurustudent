@@ -1,7 +1,8 @@
 <?php
 
 namespace Gurustudent\Http\Controllers;
-use Gurustudent\User;
+use Illuminate\Database\Eloquent\Model;
+use Gurustudent\Models\User;
 use DB;
 
 class SearchController extends Controller
