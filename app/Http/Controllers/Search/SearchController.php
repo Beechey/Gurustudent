@@ -1,8 +1,11 @@
 <?php
 
-namespace Gurustudent\Http\Controllers;
-use Illuminate\Database\Eloquent\Model;
+namespace Gurustudent\Http\Controllers\Search;
+
+use Gurustudent\Http\Controllers\Controller;
 use Gurustudent\Models\User;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use DB;
 
 class SearchController extends Controller
@@ -11,13 +14,10 @@ class SearchController extends Controller
     	$query = $request->input('query');
 
     	if(!$query) {
-    		return redirect()->route('home');
+    		return redirect()->route('home')->with('danger', 'No input found');
     	}
 
-    	$users = User::where(DB::raw('username', 'LIKE', "%{$query}%"))->get();
-
-    	dd($users);
-
-    	return view('search.results');
+    	$users = User::where('username','LIKE','%'.$query.'%')->get();
+    	return view('search.results')->with('users', $users);
     }
 }

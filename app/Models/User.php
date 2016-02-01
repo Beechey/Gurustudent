@@ -26,6 +26,25 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getName() {
+        if($this->username) {
+            return "{$this->username}";
+        }
+
+        if($this->username) {
+            return $this->username;
+        }
+
+        return null;
+    }
+
+    public function getAvatarURL() {
+        // return "https://www.gravatar.com/avatar/{{ md5($this->attributes['email']) }}?d=mm&s=40";
+
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return "http://www.gravatar.com/avatar/$hash" . '?d=mm';
+    }
+
     public function experience()
     {
         return $this->hasOne(Experience::class);

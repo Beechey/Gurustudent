@@ -1,8 +1,10 @@
 <?php
 
 Route::group(['middleware' => 'web'], function () {
-	// Static
 
+	/** 
+	  * Static pages
+	  */ 
 	Route::get('/', [
 		'uses' => 'PagesController@showIndex',					// show home page
 		'as' => 'home'
@@ -15,7 +17,9 @@ Route::group(['middleware' => 'web'], function () {
 		'as' => 'dashboard',
 	]);
 
-	// Authentication
+	/** 
+	  * Authentication
+	  */ 
     Route::auth();
 
 	Route::get('/register', [
@@ -37,9 +41,19 @@ Route::group(['middleware' => 'web'], function () {
 		'middleware' => ['guest'],
 	]);
 
-	// Search
+	/** 
+	  * Search
+	  */ 
 	Route::get('/search', [
 		'uses' => 'Search\SearchController@getResults',
 		'as' => 'search.results',
 	]);	// show results page
+
+	/** 
+	  * Profiles
+	  */ 
+	Route::get('/user/{username}', [
+		'uses' => 'Profile\ProfileController@getProfile',
+		'as' => 'profile.index',
+	]);
 });
