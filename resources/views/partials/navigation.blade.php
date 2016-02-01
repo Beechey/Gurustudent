@@ -45,10 +45,10 @@
                                 <li><a href="/logout">Logout</a></li>
                             </ul>
                         </li>
-                        <li><a href="/logout">Logout</a></li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </div>
+                    <li><a href="/logout">Logout</a></li>
+                  @endif
+              </ul>
+          </div>
+      </div>
+  </div>
 </nav>

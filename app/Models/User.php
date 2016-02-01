@@ -38,6 +38,14 @@ class User extends Authenticatable
         return null;
     }
 
+    public function getPostCount() {
+        return $this->posts;
+    }
+
+    public function getTitle() {
+        return $this->title;
+    }
+
     public function getAvatarURL() {
         // return "https://www.gravatar.com/avatar/{{ md5($this->attributes['email']) }}?d=mm&s=40";
 
@@ -45,8 +53,7 @@ class User extends Authenticatable
         return "http://www.gravatar.com/avatar/$hash" . '?d=mm';
     }
 
-    public function experience()
-    {
+    public function experience() {
         return $this->hasOne(Experience::class);
     }
 }

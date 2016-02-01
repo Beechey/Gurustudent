@@ -5,15 +5,17 @@
 @section('content')
 <h3>Search results for "{{ Request::input('query') }}"</h3>
 
+<hr />
+
 @if(!$users->count())
 	<p>No users found.</p>
 @else
 	<div class="row">
-		<div class="col-lg-12">
-			@foreach($users as $user)
+		@foreach($users as $user)
+			<div class="col-lg-3">
 				@include('partials.user.userblock')
-			@endforeach
-		</div>
+			</div>
+		@endforeach
 	</div>		
 	<div class="row">
 		<div class="text-center">

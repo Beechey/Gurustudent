@@ -15,13 +15,6 @@
  
       </div> <!-- /row -->
   
-  	  <div class="row">
-        <div class="col-lg-12 text-center v-center" style="font-size:39pt;">
-          <a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
-        </div>
-      
-      </div>
-  
   	<br><br><br><br><br>
 
 </div> <!-- /container full -->
@@ -48,11 +41,11 @@
             <div class="panel-heading"><h3>Social networking</h3></div>
             	<div class="panel-body">
             		This service also has social media aspects, such as:
-					<ul>
-						<li>Adding friends</li>
-						<li>Private messaging</li>
-						<li>Obtaning XP for answering and asking questions</li>
-					</ul>
+      					<ul>
+      						<li>Adding friends</li>
+      						<li>Private messaging</li>
+      						<li>Obtaning XP for answering and asking questions</li>
+      					</ul>
             	</div>
           	</div>
         </div>
