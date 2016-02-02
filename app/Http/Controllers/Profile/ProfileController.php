@@ -5,6 +5,7 @@ namespace Gurustudent\Http\Controllers\Profile;
 use Gurustudent\Http\Controllers\Controller;
 use Gurustudent\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -24,10 +25,17 @@ class ProfileController extends Controller
 
     public function postEdit(Request $request) {
     	$this->validate($request, [
-    		'username' => 'unique:users|alpha_dash|max:20',
-            'email' => 'unique:users|email|max:255',
-            'title' => 'max:20',
-            'password' => 'required|max:6'
+    		'username' => 'required|unique:users|alpha_dash|max:20',
+    		'title' => 'required|max:20',
+            'email' => 'required|unique:users|email|max:255',
     	]);
+
+    	Auth::user()->update([
+    		'username' => $request->input('username'),
+			'title' => $request->input('title'),
+    		'email' => $request->input('email'),
+    	]);
+
+    	return redirect()->route('profile.edit')->with('info', 'Your details have been updated.');
     }
 }
