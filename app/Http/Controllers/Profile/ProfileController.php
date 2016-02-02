@@ -17,4 +17,17 @@ class ProfileController extends Controller
 
     	return view('profile.index')->with('user', $user);
     }
+
+    public function getEdit() {
+    	return view('profile.edit');
+    }
+
+    public function postEdit(Request $request) {
+    	$this->validate($request, [
+    		'username' => 'unique:users|alpha_dash|max:20',
+            'email' => 'unique:users|email|max:255',
+            'title' => 'max:20',
+            'password' => 'required|max:6'
+    	]);
+    }
 }

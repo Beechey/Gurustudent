@@ -56,4 +56,15 @@ Route::group(['middleware' => 'web'], function () {
 		'uses' => 'Profile\ProfileController@getProfile',
 		'as' => 'profile.index',
 	]);
+
+	Route::get('/profile/edit', [
+		'uses' => 'Profile\ProfileController@getEdit',
+		'as' => 'profile.edit',
+		'middleware' => ['auth'],
+	]);
+
+	Route::post('/profile/edit', [
+		'uses' => 'Profile\ProfileController@postEdit',
+		'middleware' => ['auth'],
+	]);
 });

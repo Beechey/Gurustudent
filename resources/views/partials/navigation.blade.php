@@ -30,23 +30,16 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->username }} <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/update">Update Profile</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="/logout">Logout</a></li>
-                            </ul>
-                        </li>
+                <!-- Authentication Links -->
+                @if (Auth::guest())
+                    <li><a href="{{ url('/login') }}">Login</a></li>
+                    <li><a href="{{ url('/register') }}">Register</a></li>
+                @else
+                    <li><a href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">{{ Auth::user()->username }}</a></li>
+                    <li><a href="{{ route('profile.edit') }}">Update Profile</a></li>
                     <li><a href="/logout">Logout</a></li>
-                  @endif
+                </ul>
+                @endif
               </ul>
           </div>
       </div>
