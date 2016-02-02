@@ -12,7 +12,7 @@
 @else
 	<div class="row">
 		@foreach($users as $user)
-			<div class="col-lg-3">
+			<div class="col-lg-4">
 				@include('partials.user.userblock')
 			</div>
 		@endforeach

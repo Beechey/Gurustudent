@@ -7,20 +7,29 @@
 <hr />
 <div class="row">
 	<div class="col-md-8 form-group">
-		<form id="contact" role="form" method="POST" action="{{ route('auth.login') }}">
+		<form id="ask" role="form" method="POST" action="{{ route('question.post') }}">
+			{!! csrf_field() !!}
+
 			<div class="row">
-				<div class="col-xs-6 col-md-6 form-group">
+				<div class="col-lg-6 form-group{{ $errors->has('title') ? ' has-error' : '' }}">
 					<input class="form-control" id="title" name="title" placeholder="Title..." type="text"autofocus="">
-				</div>
-				<div class="col-xs-6 col-md-6 form-group">
-					<input class="form-control" id="tag" name="tag" placeholder="Tags..." type="text"autofocus="">
+					@if($errors->has('title'))
+						<span class="help-block">{{ $errors->first('title') }}</span>
+					@endif
 				</div>
 			</div>
-			<textarea class="form-control" id="body" name="body" placeholder="Question..." rows="5"></textarea>
+			<div class="row">
+				<div class="col-lg-12 form-group{{ $errors->has('body') ? ' has-error' : '' }}">
+					<textarea class="form-control" id="body" name="body" placeholder="What is your question, {{ Auth::user()->getName() }}?" rows="5"></textarea>
+					@if($errors->has('body'))
+						<span class="help-block">{{ $errors->first('body') }}</span>
+					@endif	
+				</div>
+			</div>
 			<br>
 			<div class="row">
 				<div class="col-xs-12 col-md-12 form-group">
-					<button class="btn btn-primary pull-right" type="submit">Submit</button>
+					<button class="btn btn-primary pull-left" type="submit">Submit</button>
 				</div>
 			</div>
 		</form>

@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       @include('partials.user.userblock')
       <hr />
     </div>

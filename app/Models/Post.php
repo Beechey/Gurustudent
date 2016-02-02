@@ -2,11 +2,11 @@
 
 namespace Gurustudent\Models;
 
-use Illuminate\Foundation\Auth\Post as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Post extends Authenticatable
+class Post extends Model
 {
-    protected $table = 'messages';
+    protected $table = 'posts';
 
     /**
      * The attributes that are mass assignable.
@@ -25,4 +25,9 @@ class Post extends Authenticatable
     protected $hidden = [
         'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('Gurustudent\Models\User', 'user_id');
+    }
 }

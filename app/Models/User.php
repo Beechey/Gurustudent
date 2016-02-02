@@ -53,6 +53,10 @@ class User extends Authenticatable
         return "http://www.gravatar.com/avatar/$hash" . '?d=mm';
     }
 
+    public function posts() {
+        return $this->hasMany('Gurustudent\Models\Post', 'user_id');
+    }
+
     public function experience() {
         return $this->hasOne(Experience::class);
     }

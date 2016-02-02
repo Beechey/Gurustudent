@@ -67,4 +67,13 @@ Route::group(['middleware' => 'web'], function () {
 		'uses' => 'Profile\ProfileController@postEdit',
 		'middleware' => ['auth'],
 	]);
+
+	/**
+	 * Posting
+	 */
+	Route::post('/post', [
+		'uses' => 'Posts\PostController@postQuestion',
+		'as' => 'question.post',
+		'middleware' => ['auth'],
+	]);
 });

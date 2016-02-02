@@ -25,8 +25,7 @@ class PagesController extends Controller {
     	return view('pages.questions');
     }
 
-    public function showDashboard()
-    {
+    public function showDashboard() {
         return view('pages.dashboard');
     }
 }
