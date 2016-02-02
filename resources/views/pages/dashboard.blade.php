@@ -7,13 +7,35 @@
 <hr />
 <div class="row">
 	<div class="text-center">
-		<h2>{{ Auth::user()->username }}'s questions</h2>
 		<div class="row">
 			<div class="col-xs-12 col-md-12 form-group">
 				<a href="/ask"><button class="btn btn-primary pull-right">Post a question</button></a>
 			</div>
 		</div>
-		<p>You haven't asked any questions yet...</p>
+		<div class="row">
+			@if(!$posts->count())
+				<p>You haven't asked any questions yet...</p>
+			@else
+                <div class="col-lg-10-offset-6">
+                    <table class="table table-hover">
+                        <thead>
+                            <th><h4>Title</h4></th>
+                            <th><h4>Created at</h4></th>
+                            <th><h4>Actions</h4></th>
+                        </thead>
+                        <tbody>
+            				@foreach($posts as $post)
+            					<tr>
+                                    <td>{{$post->title}}</td>
+                                    <td>{{$post->created_at}}</td>
+                                    <td>No actions available</td>
+                                </tr>
+            				@endforeach
+                        </tbody>
+                    </table>
+                </div>
+			@endif
+		</div>
 	</div>
 </div>
 @stop

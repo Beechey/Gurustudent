@@ -12,10 +12,6 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/contact', 'PagesController@showContact');		// show contact page
 	Route::get('/ask', 'PagesController@showAsk');				// show ask page
 	Route::get('/questions', 'PagesController@showQuestions'); 	// show questions page
-	Route::get('/dashboard', [
-		'uses' => 'PagesController@showDashboard',
-		'as' => 'dashboard',
-	]);
 
 	/** 
 	  * Authentication

@@ -5,9 +5,7 @@
 @section('content')
 @if (!Auth::user())
 	<div class="container-full">
-
       <div class="row">
-       
         <div class="col-lg-12 text-center v-center">
           <h1><b>Guru</b>student</h1>
           <p class="lead">Please sign up to use all of the website functions.</p>

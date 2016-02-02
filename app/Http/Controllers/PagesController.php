@@ -2,15 +2,26 @@
 
 namespace Gurustudent\Http\Controllers;
 
-use Gurustudent\User;
-use Validator;
+use Gurustudent\Models\User;
+use Gurustudent\Models\Post;
+use Auth;
 use Gurustudent\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class PagesController extends Controller {
     public function showIndex() {
-    	return view('pages.home');
+
+        if(Auth::check()) {
+            $posts = Post::where(function ($query) {
+                return $query->where('user_id', Auth::user()->id);
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+            return view('pages.home')->with('posts', $posts);
+        }
+        else {
+            return view('pages.home');
+        }
     }
 
     public function showContact() {
@@ -19,13 +30,5 @@ class PagesController extends Controller {
 
     public function showAsk() {
     	return view('pages.ask');
-    }
-
-    public function showQuestions() {
-    	return view('pages.questions');
-    }
-
-    public function showDashboard() {
-        return view('pages.dashboard');
     }
 }
