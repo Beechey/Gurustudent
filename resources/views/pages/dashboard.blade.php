@@ -17,15 +17,17 @@
 				<p>You haven't asked any questions yet...</p>
 			@else
                 <div class="col-lg-10-offset-6">
-                    <table class="table table-hover">
+                    <table class="table table-bordered table-hover table-condensed">
                         <thead>
-                            <th><h4>Title</h4></th>
-                            <th><h4>Created at</h4></th>
-                            <th><h4>Actions</h4></th>
+                            <th class="text-center"><h4>Thread ID</h4></th>
+                            <th class="text-center"><h4>Title</h4></th>
+                            <th class="text-center"><h4>Created at</h4></th>
+                            <th class="text-center"><h4>Actions</h4></th>
                         </thead>
                         <tbody>
             				@foreach($posts as $post)
             					<tr>
+                                    <td>{{$post->id}}</td>
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->created_at}}</td>
                                     <td>No actions available</td>
