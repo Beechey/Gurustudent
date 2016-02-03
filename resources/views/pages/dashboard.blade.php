@@ -14,7 +14,7 @@
 		</div>
 		<div class="row">
 			@if(!$posts->count())
-				<p>You haven't asked any questions yet...</p>
+				<p>You haven't asked any questions, yet...</p>
 			@else
                 <div class="col-lg-10-offset-6">
                     <table class="table table-bordered table-hover table-condensed">
@@ -29,7 +29,7 @@
             					<tr>
                                     <td>{{$post->id}}</td>
                                     <td>{{$post->title}}</td>
-                                    <td>{{$post->created_at}}</td>
+                                    <td>{{$post->created_at->diffForHumans()}}</td>
                                     <td>No actions available</td>
                                 </tr>
             				@endforeach

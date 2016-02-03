@@ -26,7 +26,7 @@ class ProfileController extends Controller
     public function postEdit(Request $request) {
     	$this->validate($request, [
     		'username' => 'required|unique:users|alpha_dash|max:20',
-    		'title' => 'required|max:20',
+    		'title' => 'required|max:50',
             'email' => 'required|unique:users|email|max:255',
     	]);
 
