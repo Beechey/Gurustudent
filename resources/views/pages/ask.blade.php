@@ -5,7 +5,6 @@
 @section('content')
 <h1>Ask a question</h1>
 <hr />
-<div class="row">
 	<div class="col-md-8 form-group">
 		<form id="ask" role="form" method="POST" action="{{ route('question.post') }}">
 			{!! csrf_field() !!}

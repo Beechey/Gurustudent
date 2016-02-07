@@ -16,8 +16,8 @@
 			@if(!$posts->count())
 				<p>You haven't asked any questions, yet...</p>
 			@else
-                <div class="col-lg-10-offset-6">
-                    <table class="table table-bordered table-hover table-condensed">
+                <div class="col-lg-10-offset-1">
+                    <table class="table table-bordered table-condensed table-striped">
                         <thead>
                             <th class="text-center"><h4>Thread ID</h4></th>
                             <th class="text-center"><h4>Title</h4></th>
@@ -28,7 +28,7 @@
             				@foreach($posts as $post)
             					<tr>
                                     <td>{{$post->id}}</td>
-                                    <td>{{$post->title}}</td>
+                                    <td><a href="#">{{$post->title}}</a></td>
                                     <td>{{$post->created_at->diffForHumans()}}</td>
                                     <td>No actions available</td>
                                 </tr>
