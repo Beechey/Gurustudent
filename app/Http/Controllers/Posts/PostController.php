@@ -2,8 +2,8 @@
 
 namespace Gurustudent\Http\Controllers\Posts;
 
-use Gurustudent\Models\User;
 use Auth;
+use Gurustudent\Models\Post;
 use Gurustudent\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -21,5 +21,12 @@ class PostController extends Controller
         ]);
 
         return redirect()->route('home')->with('info', 'Question posted.');
+    }
+
+    public function showQuestion($id)
+    {
+        $posts = Post::findOrFail($id);
+
+        return view('post.show', compact('posts'));
     }
 }

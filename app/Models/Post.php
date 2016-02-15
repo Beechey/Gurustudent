@@ -25,8 +25,8 @@ class Post extends Model
     protected $hidden = [
         'user_id',
     ];
-
-    public function user()
+    
+    public function author()
     {
         return $this->belongsTo('Gurustudent\Models\User', 'user_id');
     }

@@ -27,9 +27,9 @@
                         <tbody>
             				@foreach($posts as $post)
             					<tr>
-                                    <td>{{$post->id}}</td>
-                                    <td><a href="#">{{$post->title}}</a></td>
-                                    <td>{{$post->created_at->diffForHumans()}}</td>
+                                    <td>{{ $post->id }}</td>
+                                    <td><a href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a></td>
+                                    <td>{{ $post->created_at->diffForHumans() }}</td>
                                     <td>No actions available</td>
                                 </tr>
             				@endforeach

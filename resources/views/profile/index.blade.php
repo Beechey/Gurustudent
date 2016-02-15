@@ -27,14 +27,14 @@
           <th class="text-center"><h4>Title</h4></th>
           <th class="text-center"><h4>Answered</h4></th>
         </thead>
-        <tbody>
+        {{-- <tbody>
           @foreach($posts as $post)
           <tr>
             <td>{{ $post->id }}</td>
             <td><a href="#">{{$post->title}}</a></td>
           </tr>
           @endforeach
-        </tbody>
+        </tbody> --}}
     </table>
     </div>
   </div>

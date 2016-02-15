@@ -4,7 +4,6 @@ namespace Gurustudent\Http\Controllers\Profile;
 
 use Gurustudent\Http\Controllers\Controller;
 use Gurustudent\Models\User;
-use Gurustudent\Models\Post;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -12,7 +11,6 @@ class ProfileController extends Controller
 {
     public function getProfile($username) {
     	$user = User::where('username', $username)->first();
-        $post = Post::
 
     	if(!$user) {
     		abort(404);
