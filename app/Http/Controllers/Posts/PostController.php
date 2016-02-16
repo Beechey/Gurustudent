@@ -26,7 +26,6 @@ class PostController extends Controller
     public function showQuestion($id)
     {
         $posts = Post::findOrFail($id);
-
         return view('post.show', compact('posts'));
     }
 }

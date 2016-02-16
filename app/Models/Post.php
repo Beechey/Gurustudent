@@ -30,4 +30,9 @@ class Post extends Model
     {
         return $this->belongsTo('Gurustudent\Models\User', 'user_id');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('Gurustudent\Models\Tag')->withTimestamps();
+    }
 }
