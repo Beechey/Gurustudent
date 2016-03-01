@@ -32,7 +32,7 @@ class PostController extends Controller
     public function postReply(Request $request, $id)
     {
         $this->validate($request, [
-            'reply' => 'required|max:1000',
+            'reply' => 'required|max:10000',
         ]);
 
         $posts = Post::notReply()->find($id);

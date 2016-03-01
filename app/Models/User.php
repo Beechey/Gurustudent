@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function getAvatarURL() {
         $hash = md5(strtolower(trim($this->attributes['email'])));
-        return "http://www.gravatar.com/avatar/$hash" . '?d=mm';
+        return "http://www.gravatar.com/avatar/$hash" . '?d=mm&s=50';
     }
 
     public function posts() {
