@@ -25,7 +25,28 @@ class PostController extends Controller
 
     public function showQuestion($id)
     {
-        $posts = Post::findOrFail($id);
+        $posts = Post::notReply()->findOrFail($id);
         return view('post.show', compact('posts'));
+    }
+
+    public function postReply(Request $request, $id)
+    {
+        $this->validate($request, [
+            'reply' => 'required|max:1000',
+        ]);
+
+        $posts = Post::notReply()->find($id);
+
+        if (!$posts) {
+            return redirect()->route('home')->with('danger', 'Parent post not found.');
+        }
+
+        $reply = Post::create([
+            'body' => $request->input("reply"), 
+        ])->author()->associate(Auth::user());
+
+        $posts->replies()->save($reply);
+
+        return redirect()->back();
     }
 }

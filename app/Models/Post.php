@@ -35,4 +35,14 @@ class Post extends Model
     {
         return $this->belongsToMany('Gurustudent\Models\Tag')->withTimestamps();
     }
+
+    public function scopeNotReply($query)
+    {  
+        return $query->whereNull('parent_id');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany('Gurustudent\Models\Post', 'parent_id');
+    }
 }

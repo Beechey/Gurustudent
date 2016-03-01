@@ -11,7 +11,7 @@ class PagesController extends Controller {
     public function showIndex() {
 
         if(Auth::check()) {
-            $posts = Post::where(function ($query) {
+            $posts = Post::notReply()->where(function ($query) {
                 return $query->where('user_id', Auth::user()->id);
             })
             ->orderBy('created_at', 'desc')

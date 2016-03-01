@@ -76,5 +76,12 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/post/{id}', [
 		'uses' => 'Posts\PostController@showQuestion',
 		'as' => 'post.show',
+		'middleware' => ['auth'],
+	]);
+
+	Route::post('/post/{id}/reply', [
+		'uses' => 'Posts\PostController@postReply',
+		'as' => 'question.reply',
+		'middleware' => ['auth'],
 	]);
 });
