@@ -84,4 +84,10 @@ Route::group(['middleware' => 'web'], function () {
 		'as' => 'question.reply',
 		'middleware' => ['auth'],
 	]);
+
+	Route::get('/post/{id}/like', [
+		'uses' => 'Posts\PostController@getLike',
+		'as' => 'question.like',
+		'middleware' => ['auth'],
+	]);
 });

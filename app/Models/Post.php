@@ -45,4 +45,9 @@ class Post extends Model
     {
         return $this->hasMany('Gurustudent\Models\Post', 'parent_id');
     }
+
+    public function likes()
+    {
+        return $this->morphMany('Gurustudent\Models\Like', 'likeable');
+    }
 }

@@ -55,11 +55,27 @@
                 <div class="media-body">
                     <h6 class="media-heading"><a href="/user/{{ $reply->author->getName() }}">{{ $reply->author->getName() }}</a> answered...</h4>
                     <p>{{ $reply->body }}</p>
-                    <button type="button" class="btn btn-primary btn-xs">Like</button>
+                    <ul class="list-inline">
+                        <li>Posted {{ $reply->created_at->diffForHumans() }} |</li>
+                        @if ($reply->author->id !== Auth::user()->id)
+                            <li>
+                                <a href="{{ route('question.like', ['id' => $reply->id]) }}">
+                                    <button type="button" class="btn btn-primary btn-xs">Like</button>
+                                </a>
+                            </li>
+                            <li>
+                                {{ $reply->likes->count() }} {{ str_plural('like', $reply->likes->count()) }}
+                            </li>
+                        @else
+                            <li>
+                                {{ $reply->likes->count() }} {{ str_plural('like', $reply->likes->count()) }}
+                            </li>
+                        @endif
+                    </ul>
+                    
                 </div>
             </div>
             <hr />
-            <br />
         </div>
     @endforeach
 

@@ -11,8 +11,8 @@ class PostController extends Controller
 {
     public function postQuestion(Request $request) {
         $this->validate($request, [
-            'title' => 'required|max:140',
-            'body' => 'required|max:1500',
+            'title' => 'required|max:255',
+            'body' => 'required|max:15000',
         ]);
 
         Auth::user()->posts()->create([
@@ -32,7 +32,7 @@ class PostController extends Controller
     public function postReply(Request $request, $id)
     {
         $this->validate($request, [
-            'reply' => 'required|max:10000',
+            'reply' => 'required|max:15000',
         ]);
 
         $posts = Post::notReply()->find($id);
@@ -46,6 +46,24 @@ class PostController extends Controller
         ])->author()->associate(Auth::user());
 
         $posts->replies()->save($reply);
+
+        return redirect()->back();
+    }
+
+    public function getLike($id)
+    {
+        $posts = Post::find($id);
+
+        if (!$posts) {
+            return redirect()->route('home')->with('danger', 'That status does not exist.');
+        }
+
+        if (Auth::user()->hasLikedPost($posts)) {
+            return redirect()->back();
+        }
+
+        $like = $posts->likes()->create([]);
+        Auth::user()->likes()->save($like);
 
         return redirect()->back();
     }
