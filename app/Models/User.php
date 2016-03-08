@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->posts;
     }
 
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
     public function getAvatarURL()
     {
         $hash = md5(strtolower(trim($this->attributes['email'])));

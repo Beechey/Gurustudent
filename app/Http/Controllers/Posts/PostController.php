@@ -67,4 +67,16 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+
+    public function deletePostOrReply($id)
+    {
+        $posts = Post::find($id);
+
+        if (!$posts) {
+            return redirect()->back()->with('danger', 'That post does not exist.');
+        } else {
+            $posts->delete();
+            return redirect()->back()->with('info', 'Post has been deleted.');
+        }
+    }
 }

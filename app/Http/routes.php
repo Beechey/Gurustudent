@@ -90,4 +90,10 @@ Route::group(['middleware' => 'web'], function () {
 		'as' => 'question.like',
 		'middleware' => ['auth'],
 	]);
+
+	Route::get('/post/{id}/delete', [
+		'uses'=> 'Posts\PostController@deletePostOrReply',
+		'as' => 'post.delete',
+		'middleware' => ['auth'],
+	]);
 });

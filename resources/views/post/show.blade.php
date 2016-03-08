@@ -52,27 +52,34 @@
                 <a class="pull-left" href="/user/{{ $reply->author->getName() }}">
                     <img class="media-object" alt="{{ $reply->author->getName() }}" src="{{ $reply->author->getAvatarURL() }}">
                 </a>
+                
                 <div class="media-body">
-                    <h6 class="media-heading"><a href="/user/{{ $reply->author->getName() }}">{{ $reply->author->getName() }}</a> answered...</h4>
+                    <h5 class="media-heading"><a href="/user/{{ $reply->author->getName() }}">{{ $reply->author->getName() }}</a></h5>
                     <p>{{ $reply->body }}</p>
+                    <h6>Posted {{ $reply->created_at->diffForHumans() }}</h6>
+
+                    <br />
+
                     <ul class="list-inline">
-                        <li>Posted {{ $reply->created_at->diffForHumans() }} |</li>
                         @if ($reply->author->id !== Auth::user()->id)
                             <li>
                                 <a href="{{ route('question.like', ['id' => $reply->id]) }}">
-                                    <button type="button" class="btn btn-primary btn-xs">Like</button>
+                                    <button type="button" class="btn btn-primary btn-xs">
+                                        <span class="glyphicon glyphicon-thumbs-up"></span> {{ $reply->likes->count() }}
+                                    </button>
                                 </a>
                             </li>
+                        @endif
+                        @if ($posts->author->id == Auth::user()->id)
                             <li>
-                                {{ $reply->likes->count() }} {{ str_plural('like', $reply->likes->count()) }}
-                            </li>
-                        @else
-                            <li>
-                                {{ $reply->likes->count() }} {{ str_plural('like', $reply->likes->count()) }}
+                                <a href="#">
+                                    <button type="button" class="btn btn-primary btn-xs">
+                                        <span class="glyphicon glyphicon-ok-circle"></span>
+                                    </button>
+                                </a>
                             </li>
                         @endif
                     </ul>
-                    
                 </div>
             </div>
             <hr />

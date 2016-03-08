@@ -17,20 +17,38 @@
 				<p>You haven't asked any questions, yet...</p>
 			@else
                 <div class="col-lg-10-offset-1">
-                    <table class="table table-bordered table-condensed table-striped">
+                    <table class="table table-striped table-responsive">
+                        <caption>Your threads</caption>
                         <thead>
-                            <th class="text-center"><h4>Thread ID</h4></th>
-                            <th class="text-center"><h4>Title</h4></th>
-                            <th class="text-center"><h4>Created at</h4></th>
-                            <th class="text-center"><h4>Actions</h4></th>
+                            <tr>
+                                <th class="text-center"><h4>Title</h4></th>
+                                <th class="text-center"><h4>Created at</h4></th>
+                                <th class="text-center"><h4>Actions</h4></th>
+                            </tr>
                         </thead>
                         <tbody>
             				@foreach($posts as $post)
             					<tr>
-                                    <td>{{ $post->id }}</td>
                                     <td><a href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a></td>
                                     <td>{{ $post->created_at->diffForHumans() }}</td>
-                                    <td>No actions available</td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li>
+                                                <a href="#">
+                                                    <button type="button" class="btn btn-primary btn-xs">
+                                                        <span class="glyphicon glyphicon-remove-circle"></span> Close
+                                                    </button>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('post.delete', ['id' => $post->id]) }}">
+                                                    <button type="button" class="btn btn-primary btn-xs">
+                                                        <span class="glyphicon glyphicon-trash"></span> Delete
+                                                    </button>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </td>
                                 </tr>
             				@endforeach
                         </tbody>
