@@ -15,7 +15,7 @@ class PagesController extends Controller {
                 return $query->where('user_id', Auth::user()->id);
             })
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->paginate(50);
 
             return view('pages.home')->with('posts', $posts);
         }
@@ -30,5 +30,16 @@ class PagesController extends Controller {
 
     public function showAsk() {
     	return view('pages.ask');
+    }
+
+    public function showQuestions()
+    {
+        $posts = Post::notReply()->where(function ($query) {
+            return $query->whereNotNull('user_id');
+        })
+        ->orderBy('created_at', 'desc')
+        ->paginate(50);
+
+        return view('pages.questions')->with('posts', $posts);
     }
 }

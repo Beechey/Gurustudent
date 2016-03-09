@@ -3,19 +3,20 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesTable extends Migration
+class CreateCommuntiesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('communities', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('label')->nullable;
+            $table->integer('name')->unique();
+            $table->string('display_name');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('roles');
+        Schema::drop('communities');
     }
 }

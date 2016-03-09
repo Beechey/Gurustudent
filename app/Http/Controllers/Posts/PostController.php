@@ -20,7 +20,7 @@ class PostController extends Controller
             'body' => $request->input('body'),
         ]);
 
-        return redirect()->route('home')->with('info', 'Question posted.');
+        return redirect()->back()->with('info', 'Question posted.');
     }
 
     public function showQuestion($id)

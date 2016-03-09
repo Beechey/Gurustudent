@@ -19,6 +19,25 @@
             <h4 class="media-heading"><a href="/user/{{ $posts->author->getName() }}">{{ $posts->author->getName() }}</a> asks...</h4>
             <p>{{ $posts->body }}</p>
             <p><i>Asked {{ $posts->created_at->diffForHumans() }}</p>
+            <ul class="list-inline">
+                <li>
+                    @can('edit_post')
+                        <a href="#">
+                            <button type="button" class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-edit"></span> Edit
+                            </button>
+                        </a>
+                    @endcan
+                </li>
+                <li>
+                    @can('ban_user')
+                        <a href="#">
+                            <button type="button" class="btn btn-primary btn-xs">
+                                <span class="glyphicon glyphicon-thumbs-down"></span> Ban
+                            </button>
+                        </a>
+                    @endcan
+                </li>
         </div>
     </div>
 
@@ -54,7 +73,7 @@
                 </a>
                 
                 <div class="media-body">
-                    <h5 class="media-heading"><a href="/user/{{ $reply->author->getName() }}">{{ $reply->author->getName() }}</a></h5>
+                    <h5 class="media-heading"><a href="/user/{{ $reply->author->getName() }}">{{ $reply->author->getName() }}</a></h5> 
                     <p>{{ $reply->body }}</p>
                     <h6>Posted {{ $reply->created_at->diffForHumans() }}</h6>
 
@@ -68,6 +87,11 @@
                                         <span class="glyphicon glyphicon-thumbs-up"></span> {{ $reply->likes->count() }}
                                     </button>
                                 </a>
+                            </li>
+                        @endif
+                        @if (Auth::user())
+                            <li>
+                                {{ $reply->likes->count() }} like(s)
                             </li>
                         @endif
                         @if ($posts->author->id == Auth::user()->id)

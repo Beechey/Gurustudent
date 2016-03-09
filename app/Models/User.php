@@ -4,6 +4,7 @@ namespace Gurustudent\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Gurustudent\Models\Post;
+use Gurustudent\Models\Role;
 
 class User extends Authenticatable
 {
@@ -37,6 +38,28 @@ class User extends Authenticatable
         return $this->hasMany('Gurustudent\Models\Like', 'user_id');
     }
 
+    public function roles()
+    {
+        // return $this->belongsToMany('Gurustudent\Models\Role');
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole($role)
+    {
+        if (is_string($role)) {
+            return $this->roles->contains('name', $role);
+        }
+
+        return !! $role->intersect($this->roles)->count();
+    }
+
+    public function assignRole($role)
+    {
+        $this->roles()->save(
+            Role::whereName($role)->firstOrFail()
+        );
+    }
+
     public function getName()
     {
         if($this->username) {
@@ -57,13 +80,15 @@ class User extends Authenticatable
 
     public function getTitle()
     {
-        return $this->title;
+        if ($this->title) {
+            return "{$this->title}";
+        }
     }
 
     public function getAvatarURL()
     {
         $hash = md5(strtolower(trim($this->attributes['email'])));
-        return "http://www.gravatar.com/avatar/$hash" . '?d=mm&s=50';
+        return "http://www.gravatar.com/avatar/$hash" . '?d=mm&s=64';
     }
 
     public function hasLikedPost(Post $posts)

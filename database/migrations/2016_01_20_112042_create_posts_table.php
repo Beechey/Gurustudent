@@ -16,8 +16,9 @@ class CreatePostsTable extends Migration
             $table->increments('id')->unique();
             $table->integer('user_id');
             $table->integer('parent_id')->nullable();
+            $table->integer('community_id');
             $table->string('title');
-            $table->string('body');
+            $table->text('body');
             $table->timestamps();
         });
     }
