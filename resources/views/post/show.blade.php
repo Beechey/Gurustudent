@@ -11,7 +11,7 @@
 
     <hr />
 
-    <div class="media">
+    <div class="media post-media">
         <a class="pull-left" href="/user/{{ $posts->author->getName() }}">
             <img class="media-object" alt="{{ $posts->author->getName() }}" src="{{ $posts->author->getAvatarURL() }}">
         </a>
@@ -19,6 +19,11 @@
             <h4 class="media-heading"><a href="/user/{{ $posts->author->getName() }}">{{ $posts->author->getName() }}</a> asks...</h4>
             <p>{{ $posts->body }}</p>
             <p><i>Asked {{ $posts->created_at->diffForHumans() }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
             <ul class="list-inline">
                 <li>
                     @can('edit_post')
@@ -38,9 +43,10 @@
                         </a>
                     @endcan
                 </li>
+            </ul>
         </div>
     </div>
-
+    
     <hr />
 
     <div class="col-lg-12">
@@ -66,8 +72,7 @@
 
     @foreach($posts->replies as $reply)
         <div class="col-xs-11 pull-right">
-            <hr />
-            <div class="media">
+            <div class="media reply-media">
                 <a class="pull-left" href="/user/{{ $reply->author->getName() }}">
                     <img class="media-object" alt="{{ $reply->author->getName() }}" src="{{ $reply->author->getAvatarURL() }}">
                 </a>
@@ -106,7 +111,6 @@
                     </ul>
                 </div>
             </div>
-            <hr />
         </div>
     @endforeach
 

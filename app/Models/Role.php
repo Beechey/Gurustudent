@@ -5,6 +5,7 @@ namespace Gurustudent\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Gurustudent\Models\Permission;
+use Gurustudent\Models\User;
 
 class Role extends Model
 {
@@ -21,7 +22,6 @@ class Role extends Model
 
     public function permissions()
     {
-    	// return $this->belongsToMany('Gurustudent\Models\Permission');
         return $this->belongsToMany(Permission::class);
 
     }

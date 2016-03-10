@@ -34,18 +34,18 @@
                         <thead>
                             <tr>
                                 <th class="text-center"><h4>Title</h4></th>
-                                <th class="text-center"><h4>Created at</h4></th>
-                                <th class="text-center"><h4>Posted by</h4></th>
+                                <th class="text-center"><h4>Posted</h4></th>
+                                <th class="text-center"><h4>Asker</h4></th>
                                 <th class="text-center"><h4>Actions</h4></th>
                             </tr>
                         </thead>
                         <tbody>
             				@foreach($posts as $post)
             					<tr>
-                                    <td><a href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a></td>
-                                    <td>{{ $post->created_at->diffForHumans() }}</td>
-                                    <td><a href="/user/{{ $post->author->getName() }}">{{ $post->author->getName() }}</a></td>
-                                    <td>
+                                    <td class="col-lg-6"><a href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a></td>
+                                    <td class="col-lg-1">{{ $post->created_at->diffForHumans() }}</td>
+                                    <td class="col-lg-1"><a href="/user/{{ $post->author->getName() }}">{{ $post->author->getName() }}</a></td>
+                                    <td class="col-lg-4">
                                         <ul class="list-inline">
                                         	@if ($post->user_id == Auth::user()->id)
 	                                            <li>

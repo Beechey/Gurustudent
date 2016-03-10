@@ -5,6 +5,7 @@ namespace Gurustudent\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Gurustudent\Models\Post;
 use Gurustudent\Models\Role;
+use Gurustudent\Models\Permission;
 
 class User extends Authenticatable
 {
@@ -38,9 +39,12 @@ class User extends Authenticatable
         return $this->hasMany('Gurustudent\Models\Like', 'user_id');
     }
 
+    /**
+      * Roles
+      */
+
     public function roles()
     {
-        // return $this->belongsToMany('Gurustudent\Models\Role');
         return $this->belongsToMany(Role::class);
     }
 
@@ -59,6 +63,10 @@ class User extends Authenticatable
             Role::whereName($role)->firstOrFail()
         );
     }
+
+    /**
+      * Profile methods
+      */
 
     public function getName()
     {

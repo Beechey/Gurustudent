@@ -16,6 +16,19 @@ Route::group(['middleware' => 'web'], function () {
 		'as' => 'show.all' 
 	]); 	
 
+	/**
+	  * Administration
+	  */
+	Route::get('/admin', [
+		'uses' => 'Admin\AdminController@getAdminCP',
+		'as' => 'admin.panel'
+	]);
+
+	Route::get('/admin/users', [
+		'uses' => 'Admin\AdminController@getUsers',
+		'as' => 'admin.users'
+	]);
+
 	/** 
 	  * Authentication
 	  */ 

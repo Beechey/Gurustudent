@@ -41,9 +41,9 @@
                         <tbody>
             				@foreach($posts as $post)
             					<tr>
-                                    <td><a href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a></td>
-                                    <td>{{ $post->created_at->diffForHumans() }}</td>
-                                    <td>
+                                    <td class="col-lg-6"><a href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a></td>
+                                    <td class="col-lg-2">{{ $post->created_at->diffForHumans() }}</td>
+                                    <td class="col-lg-4">
                                         <ul class="list-inline">
                                             <li>
                                                 <a href="#">

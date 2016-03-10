@@ -37,7 +37,7 @@
                 @else
                     <li><a href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">{{ Auth::user()->username }}</a></li>
                     @can('view_acp')
-                        <li><a href="#">Admin CP</a></li>
+                        <li><a href="{{ route('admin.panel') }}">Admin CP</a></li>
                     @endcan
                     <li><a href="{{ route('profile.edit') }}">Update Profile</a></li>
                     <li><a href="/logout">Logout</a></li>
