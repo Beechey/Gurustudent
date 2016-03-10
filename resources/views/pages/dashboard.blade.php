@@ -69,5 +69,7 @@
 			@endif
 		</div>
 	</div>
+
+    {{ $posts->links() }}
 </div>
 @stop

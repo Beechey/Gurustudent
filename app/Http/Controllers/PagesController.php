@@ -15,7 +15,7 @@ class PagesController extends Controller {
                 return $query->where('user_id', Auth::user()->id);
             })
             ->orderBy('created_at', 'desc')
-            ->paginate(50);
+            ->paginate(10);
 
             return view('pages.home')->with('posts', $posts);
         }
@@ -38,7 +38,7 @@ class PagesController extends Controller {
             return $query->whereNotNull('user_id');
         })
         ->orderBy('created_at', 'desc')
-        ->paginate(50);
+        ->paginate(10);
 
         return view('pages.questions')->with('posts', $posts);
     }
